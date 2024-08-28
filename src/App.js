@@ -1,21 +1,26 @@
 import React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 
 import "./App.css";
-import { FunctionComponent } from "./functionComponent";
 import EventBubbling from "./eventBubbling";
-import { ApiDataFetching } from "./apiDataFetching";
-import { ParentReference } from "./parent";
-import { Counter } from "./counter";
+import { FallbackRender } from "./errorBoundaries";
+import { MemoizedComponent } from "./memoizedComponent";
+// import { Input } from "./input";
+// import { ParentReference } from "./parent";
 
 function App() {
-  console.log("called app")
   return (
     <div className="App">
-      {/* <FunctionComponent name={"Training"} age={10} number={14} /> */}
-      {/* <EventBubbling/> */}
-      {/* <ApiDataFetching/> */}
-      <ParentReference/>
-      {/* <Counter/> */}
+    
+      <ErrorBoundary
+        fallbackRender={FallbackRender}
+        onReset={(details) => {
+          // Reset the state of your app so the error doesn't happen again
+
+        }}
+      > 
+      <MemoizedComponent value={{}}/>
+       </ErrorBoundary>
     </div>
   );
 }

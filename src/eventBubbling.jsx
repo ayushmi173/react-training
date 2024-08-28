@@ -1,23 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-// const useTimer = () => {
-//   const [timer, setTimer] = useState(() => new Date());
-
-//   useEffect(() => {
-//     const id = setInterval(() => {
-//       setTimer(new Date());
-//     }, 1000);
-
-//     return () => clearInterval(id);
-//   }, []);
-
-//   return timer;
-// };
+import {triggerSchema} from  './yupSchema'
 
 export const EventBubbling = (props) => {
   const [object, setObject] = useState({});
   const [counter, setCounter] = useState(0);
-  // const time = useTimer();
 
   // useEffect(() => {
   //   setObject((prev) => ({
@@ -29,8 +16,7 @@ export const EventBubbling = (props) => {
   console.log(object);
 
   const handleDivFirst = (event) => {
-    setCounter((counter) => counter + 1);
-    console.log("counteeerere", counter);
+    event.stopPropagation();
 
     setObject({
       ...object,
@@ -40,6 +26,8 @@ export const EventBubbling = (props) => {
   };
 
   const handleDivSecond = (event) => {
+    event.stopPropagation();
+
     setObject({
       ...object,
       handleDivSecond: "handleDivSecond",
@@ -48,13 +36,16 @@ export const EventBubbling = (props) => {
   };
 
   const handleDivThird = (event) => {
-    // event.stopPropagation();
+    event.stopPropagation();
     setObject({
       ...object,
       handleDivThird: "handleDivThird",
     });
     console.log("handleDivThird");
   };
+
+  console.log(triggerSchema())
+
 
   return (
     <>

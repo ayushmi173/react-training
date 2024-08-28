@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
 
+/**
+ * Fetching the latest data from the url
+ * @param {*} url 
+ * @returns 
+ */
 const useCustomHooks = (url) => {
   const [data, setData] = useState(null);
 

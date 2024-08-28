@@ -42,11 +42,6 @@ export const FunctionComponent = ({ name, age, number }) => {
 
   const elements = Array(4);
 
-  // useEffect(()=>{
-
-  //   return ()=> {}
-  // },[])
-
   return (
     <>
       {   (

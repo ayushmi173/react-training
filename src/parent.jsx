@@ -6,9 +6,13 @@ import { MemoizedComponent } from "./memoizedComponent";
 export const ParentReference = () => {
   const [currentDate, setCurrentDate] = useState();
 
-  // const data = useCustomHooks(
-  //   "https://api.sampleapis.com/codingresources/codingResources"
-  // );
+  const data = useCustomHooks(
+    "https://api.sampleapis.com/codingresources/codingResources"
+  );
+
+  console.log("dataaaa &&&&");
+
+
   const value = 10 * 10 + 10993545 + 43434;
 
   // const calculateMe = useCallback(() => {
@@ -17,14 +21,13 @@ export const ParentReference = () => {
   // }, [value]);
 
   // const memoizedValue = calculateMe();
-
+  
   return (
     <>
       <div>
-        Parent Component is getting date from child component {" "}
-        {currentDate}
+        Parent Component is getting date from child component {currentDate}
       </div>
-      <MemoizedComponent  value={value}/>
+      <MemoizedComponent value={value} />
       <Child setCurrentDate={setCurrentDate} />
     </>
   );
