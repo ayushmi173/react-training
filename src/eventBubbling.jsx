@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import {triggerSchema} from  './yupSchema'
-
 export const EventBubbling = (props) => {
   const [object, setObject] = useState({});
   const [counter, setCounter] = useState(0);
@@ -44,18 +42,15 @@ export const EventBubbling = (props) => {
     console.log("handleDivThird");
   };
 
-  console.log(triggerSchema())
-
-
   return (
     <>
       <div
         style={{ border: "10px solid red", width: "500px", height: "700px" }}
-        onClick={handleDivFirst}
+        onClickCapture={handleDivFirst}
       >
         <div
           className="center"
-          onClick={(event) => handleDivSecond(event)}
+          onClickCapture={(event) => handleDivSecond(event)}
           style={{
             position: "relative",
             border: "10px solid grey",
@@ -65,7 +60,7 @@ export const EventBubbling = (props) => {
         >
           <div
             className="center"
-            onClick={handleDivThird}
+            onClickCapture={handleDivThird}
             style={{
               position: "relative",
               border: "10px solid green",

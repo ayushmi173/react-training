@@ -73,8 +73,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 day 3
 
-Refs and useRef Hook
-Custom-Hooks                                                                                                                                      useReducer
+Refs and useRef
+Custom-Hooks
+useReducer
 Events and Event Handlers State
 Forms and Validation
 Type checking of component with prop types

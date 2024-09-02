@@ -9,7 +9,7 @@ export async function triggerSchema() {
 
   const userSchema = object().shape({
     email: string().min(8).email("Must be a valid email"),
-    password: string(),
+    password: string().required(),
     acceptTermsAndConditions: boolean().required().oneOf([true]),
   });
 

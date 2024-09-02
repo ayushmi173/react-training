@@ -12,10 +12,9 @@ export const Input = () => {
     }
   };
 
-
   return (
     <>
-      <input type="text" ref={inputElement} />
+      <input id="myinput" type="text" ref={inputElement} />
       <button onClick={focusInput}>Focus Input</button>
     </>
   );
