@@ -5,6 +5,7 @@ export const EventBubbling = (props) => {
   const [counter, setCounter] = useState(0);
 
   // useEffect(() => {
+    
   //   setObject((prev) => ({
   //     ...prev,
   //     divFirst: "heyo",

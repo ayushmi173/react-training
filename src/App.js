@@ -1,48 +1,23 @@
-import React from "react";
-import { ErrorBoundary } from "react-error-boundary";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { useState } from "react";
 
 import "./App.css";
-import EventBubbling from "./eventBubbling";
-import { FallbackRender } from "./errorBoundaries";
-import { MemoizedComponent } from "./memoizedComponent";
-// import { Input } from "./input";
-// import { ParentReference } from "./parent";
-
-import Root from "./root";
-import { ParentReference } from "./parent";
-import { Input } from "./input";
+import { ThemeContext } from "./context/themeContext";
+import { Counter } from "./counter";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "*",
-      element: <Root />,
-    },
-    {
-      path: "/testing",
-      element: <Root />,
-    },
-    {
-      path: "/home",
-      element: <div>Home component is called</div>,
-    },
-    { path: "/parent", element: <ParentReference /> },
-  ]);
+  const [theme, setTheme] = useState("");
+
+  const handleClick = () => {
+    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
+  };
 
   return (
     <div className="App">
-      <ErrorBoundary
-        fallbackRender={FallbackRender}
-        onReset={(details) => {
-          // Reset the state of your app so the error doesn't happen again
-        }}
-      >
-        {/* <RouterProvider router={router} /> */}
-        <EventBubbling />
-        {/* <Input/> */}
-        {/* <MemoizedComponent value={10} /> */}
-      </ErrorBoundary>
+      <ThemeContext.Provider  value={{ theme }}>
+        <div>Theme is ready</div>
+        <Counter />
+        <button onClick={handleClick}>Change Theme</button>
+      </ThemeContext.Provider>
     </div>
   );
 }
