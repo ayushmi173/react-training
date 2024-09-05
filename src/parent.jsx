@@ -3,21 +3,21 @@ import { Child } from "./child";
 import useCustomHooks from "./useCustomHooks";
 import { MemoizedComponent } from "./memoizedComponent";
 import { useLocation } from "react-router-dom";
+import { withAuth } from "./hoc/getAuth";
 
-export const ParentReference = () => {
+const ParentReference = ({name, age}) => {
   const [currentDate, setCurrentDate] = useState();
 
   const data = useCustomHooks(
     "https://api.sampleapis.com/codingresources/codingResources"
   );
 
-  console.log("dataaaa &&&&");
+  console.log("dataaaa &&&&", data);
 
   const value = 10 * 10 + 10993545 + 43434;
 
-
-// const location = useLocation();
-// console.log("location", location)
+  // const location = useLocation();
+  // console.log("location", location)
 
   // const calculateMe = useCallback(() => {
   //   console.log("calculate me");
@@ -25,7 +25,7 @@ export const ParentReference = () => {
   // }, [value]);
 
   // const memoizedValue = calculateMe();
-  
+
   return (
     <>
       <div>
@@ -36,3 +36,5 @@ export const ParentReference = () => {
     </>
   );
 };
+
+export const Parent = withAuth(ParentReference);
